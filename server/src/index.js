@@ -22,9 +22,9 @@ app.use(session({
 }));
 
 // Routes
-app.use("/user", userRouter);
-app.use("/exercises", exercisesRouter);
-app.use("/workouts", workoutsRouter);
+app.use("/api/user", userRouter);
+app.use("/api/exercises", exercisesRouter);
+app.use("/api/workouts", workoutsRouter);
 
 // Start server
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))

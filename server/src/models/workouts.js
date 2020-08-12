@@ -13,10 +13,10 @@ const schema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'Exercises'
     }],
-    public: {
-        type: Boolean,
-        required: true
-    }
+    // public: {
+    //     type: Boolean,
+    //     required: false
+    // }
 });
 
 module.exports = mongoose.model('Workouts', schema);

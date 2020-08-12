@@ -14,6 +14,22 @@ router.use((req, res, next) => {
 });
 
 
+
+router.get("/:id", async (req, res) => {
+    console.log("req params", req.params)
+    console.log("req session", req.session)
+    try {
+        const workout = await Workout.findOne({owner: req.session.user.id, _id: req.params.id}).populate('exercises');
+        console.log("backend workout", workout)
+        // res.json(workout);
+        res.status(200).json(workout);
+    } catch (e){
+        console.log("catch", e)
+        res.status(400).send("bad request");
+
+    }
+})
+
 router.get("/", async (req, res) => {
     try {
         const workout = await Workout.find({owner: req.session.user.id}).populate('exercises');
@@ -23,6 +39,7 @@ router.get("/", async (req, res) => {
 
     }
 })
+
 
 
 router.post("/new", async (req, res) => {

@@ -27,6 +27,7 @@ router.use((req, res, next) => {
 
 
 router.post('/new', async (req, res) => {
+    console.log("exercise post", req.body)
     try {
         const data = await Exercise.create(req.body);
         res.json(data);

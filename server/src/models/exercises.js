@@ -19,7 +19,7 @@ const schema = new mongoose.Schema({
     },
     public: {
         type: Boolean,
-        required: true
+        required: false
     }
 });
 

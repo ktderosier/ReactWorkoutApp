@@ -13,10 +13,18 @@ const schema = new mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'Exercises'
     }],
-    // public: {
-    //     type: Boolean,
-    //     required: false
-    // }
+    ownerId: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User'
+    },
+    public: {
+        type: Boolean,
+        required: false
+    },
+    bookmark: {
+        type: Boolean
+    }
+
 });
 
 module.exports = mongoose.model('Workouts', schema);

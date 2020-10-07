@@ -1,6 +1,9 @@
 const express   = require("express");
 const Exercise = require('../models/exercises');
 const router = express.Router();
+const jwt = require('jsonwebtoken');
+
+const secretKey = '249b04b2-8312-432b-b145-5a0eff40c1b8'; //GUID
 
 //public routes
 router.get("/", async (req, res) => {
@@ -18,12 +21,18 @@ router.get("/:id", async (req, res) => {
 
 
 router.use((req, res, next) => {
-    if(req.session.user){
-        next();
-    } else {
-        res.status(401).send("Please login");
-    }
-});
+    const token = req.get('token');
+
+    jwt.verify(token, secretKey, {algorithms: ["HS256"]}, (err, decode) => {
+        if(!err) {
+            req.user = decode;
+            next();
+        }
+        else {
+            res.status(401).send('please login');
+        }
+    })
+})
 
 
 router.post('/new', async (req, res) => {
@@ -31,7 +40,8 @@ router.post('/new', async (req, res) => {
     try {
         const data = await Exercise.create(req.body);
         res.json(data);
-    } catch {
+    } catch (e){
+        console.log('exercise', e)
         res.status(400).send("bad request");
     }
 });

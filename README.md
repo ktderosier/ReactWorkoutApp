@@ -5,6 +5,8 @@ Previous wireframe: https://wireframe.cc/hut6ue
 This is a workout app that allows you to build your own workout. There are existing exercises to choose from and the user can add their own.
 
 
+/////
+-Was not able to add functionality to save a workout to a user's profile yet.
 
 ////////Features to add:
 -Random workout generator that randomizes based on muslce type chosen and how many exercises you want to do.
@@ -30,8 +32,7 @@ This is a workout app that allows you to build your own workout. There are exist
 
 
 Problems that weren't fixed yet/ that I ran into:
--I was going to add a show/hide ability for the descriptions on the main page. Bootstrap had other plans so that does not work yet. :) 
--LOTS of conflicting CSS with using Bootstrap.
+-Profile update API call does not show on the screen.
 
 
 

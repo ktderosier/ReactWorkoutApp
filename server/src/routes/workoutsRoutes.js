@@ -124,11 +124,12 @@ router.patch('/bookmark/:workoutId/:save', async (req, res) => {
 
 //get bookmarked workout
 
-router.get("/saved", async (req, res) => {
+router.get('/saved', async (req, res) => {
+    console.log('book mark workout get', req.user.id)
     try {
-        const savedWorkouts = await Workout.find(ownerId, {bookmark: true}, {ownerId: req.user.id})
-        res.json(savedWorkouts);
+        const savedWorkouts = await Workout.find({owner: req.user.id, bookmark: 'true'})
         console.log('saved workouts', savedWorkouts)
+        res.json(savedWorkouts);
     } catch (e) {
         console.log('e', e)
         res.status(400).send("bad request");

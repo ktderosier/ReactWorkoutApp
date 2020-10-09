@@ -81,7 +81,7 @@ export async function getWorkout(id) {
 
 //bookmark workout
 export async function bookmarkWorkout (workoutId){
-  const result = await fetch(`api/workouts/bookmark/${workoutId}/true`, {
+  const result = await fetch(`/api/workouts/bookmark/${workoutId}/true`, {
     method: "PATCH",  
     headers: headerOptions
   });
@@ -91,8 +91,9 @@ export async function bookmarkWorkout (workoutId){
 }
 
 //get bookmarked workouts
-export async function savedWorkouts (bookmarkedWorkouts){
-  const result = await fetch("api/workouts/saved", {
+export async function savedWorkouts (){
+  console.log('api hit')
+  const result = await fetch('/api/workouts/saved', {
     headers: headerOptions
   });
   const data = await result.json()
